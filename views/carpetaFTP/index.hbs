@@ -1,0 +1,28 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-folder"></i>
+    Contenido del directorio SFTP</div>
+  <div class="card-body">
+
+    <ul class="file-tree">
+      {{#each response}}
+      {{#if this.extension}}
+      <li><a href="#">{{this.nombre}}</a></li>
+      {{else}}
+      <li><a href="#">{{this.nombre}}</a>
+        <ul>
+          {{#each this.contenido}}
+          {{#if this.extension}}
+          <li><a href="{{this.nombre}}">{{this.nombre}}</a></li>
+          {{else}}
+          <li class="folder-root closed">{{this.nombre}}</li>
+          {{/if}}
+          {{/each}}
+        </ul>
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="card-footer small text-muted">Ruta: '{{rutaFTP}}'</div>
+</div>
